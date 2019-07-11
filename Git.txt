@@ -1,0 +1,25 @@
+How to use Git
+
+1) Pull from the master branch whenever you start working on the code. This ensures that you are always running the latest
+source code and that the entire team is on the same page. There should never by any conflicts between the changes made in your local branch and the changes made in the master branch - that is, we should just about always be able to merge the two 
+branches automagically. Also remember that new commits to the master branch don't change the files in your local branch, so there isn't any reason not to keep your master branch up to date. 
+
+2) Branch early and branch often. When you start work on a new feature, a bug fix, or any non-trivial change, 
+create a new branch and proceed from there. Branches should be named according to work/changes that they contain.
+
+    Let's take an example.
+    Say I am adding a new page called Profile to the app. I would do something like
+        git branch profilePage; git checkout profilePage
+    From there I can start my work. If you ever need to check which branch you are on (a good idea now and then) use
+        git branch -v
+
+3) Add commits to your branch as you make progress throughout your task. Commits should have descriptive and relatively 
+brief descriptions - I emphasize descriptive much more than brief. It is a good idea to note what files are in progress
+and what functionality is completed in each commit message. 
+
+4) Create a pull request using Github's website when your work is finished. This will generate a notification in the 
+appropriate Slack channel and let the team know that there is new code to review and merge. If the code needs any additional 
+changes or update, you will get additional feedback - otherwise, it'll get merged into the production branch and run happily
+ever after. 
+
+
