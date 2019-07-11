@@ -1,4 +1,4 @@
-#python is a syntantically opinionated language and enforces whitespace rules by nature
+#python is a syntactically opinionated language and enforces whitespace rules by nature
 #so we will focus on naming conventions
 
 #class names are UpperCamelCase. As always, names should be descriptive
