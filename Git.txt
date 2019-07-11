@@ -1,4 +1,7 @@
-How to use Git
+For a graphical and interactive introduction to some of these topics, I'd make my way through the first couple 
+of examples here --> https://learngitbranching.js.org/
+
+Git Guidelines 
 
 1) Pull from the master branch whenever you start working on the code. This ensures that you are always running the latest
 source code and that the entire team is on the same page. There should never by any conflicts between the changes made in your local branch and the changes made in the master branch - that is, we should just about always be able to merge the two 
@@ -15,7 +18,7 @@ create a new branch and proceed from there. Branches should be named according t
 
 3) Add commits to your branch as you make progress throughout your task. Commits should have descriptive and relatively 
 brief descriptions - I emphasize descriptive much more than brief. It is a good idea to note what files are in progress
-and what functionality is completed in each commit message. 
+and what functionality is completed in each commit message. Having sufficient descriptions are crucial to track where and when bugs are introduced into our production code!
 
 4) Create a pull request using Github's website when your work is finished. This will generate a notification in the 
 appropriate Slack channel and let the team know that there is new code to review and merge. If the code needs any additional 
