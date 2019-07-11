@@ -58,10 +58,45 @@ export const Style2 = ({prop1, prop2}) => {
         </div>
     )
 
+    //when you are writing your components, try to keep things as D(ont)R(epeat)Y(ourself) as possible
+    //example
+
+    //this is pretty bad
+    let finalDiv
+    if (prop2 === 'whatever') {
+        finalDiv = (
+            <div> All I really needed to do was change the text! </div>
+        )
+    } else {
+        finalDiv = (
+            <div> But I made two divs for it! </div>
+        )
+    }
+    //now you have to make changes to the code in two places to keep a single div styled
+    //that's bad!
+
+    ///this is better
+    let varText
+    if (prop2 === 'whatever') {
+        varText = "This is what I really needed!"
+    } else {
+        varText = "Some DRY code!"
+    }
+
+    finalDiv = (
+        <div> { varText } </div>
+    )
+
+    //or even more concise
+    finalDiv = (
+        <div> { (prop2 === 'whatever') ? "Use this string if the expression is true" : "Otherwise use this one!" } </div>
+    )
+
     return (
         <div>
             Just another example
             { content }
+            { finalDiv }
         </div>
     )
 }
