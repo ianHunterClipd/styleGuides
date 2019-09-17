@@ -37,6 +37,18 @@ let initial_let = {
 
 //Example of a class based component in React
 class Style extends Component {
+    //any props that are necessary for the component should be documented here
+    /*
+    simple_prop := boolean, an example of a simple prop with a single type
+    another_simple_prop := integer, another simple prop with a single type
+    more_complicated_prop := [ ints ], an array of integers
+    most_complicated_prop := {
+        data := [ {
+            text: string, data is an array of objects with a key text that maps to a string
+        }],
+        is_loaded: boolean, true if the data has been loaded
+    }
+    */
     constructor(props) {
         //What is super?
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
@@ -81,9 +93,14 @@ class Style extends Component {
 //what is object destructuring?
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 export const Style2 = ({first_prop, second_prop}) => {
-    
+    //document your props!
+    /*
+    first_prop := boolean, true if the sky is blue
+    second_prop := integer, I'm only here to make the destructuring example look cool
+    */
+
     //just like with return statements, wrap JSX assignments in parentheses
-    let content = (
+    const content = (
         <div>
             The wonderful world of JSX
             { " You should be very comfortable with JSX's bracket notation" }
