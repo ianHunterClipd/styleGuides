@@ -1,25 +1,66 @@
-//you should know the difference between a default and non-default import statement
+//JAVASCRIPT STYLE GUIDE
+//last updated: 9/16/2019
+
+//NAMING CONVENTIONS
+//THESE WILL BE ENFORCED WITH A VENGANCE
+//UpperCamelCase := React Component
+//lowerCamelCase := function
+//slither_case := object (anything that isn't a function or a React component)
+
+//you should know the difference between default and non-default import statements
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 import React, { Component } from 'react'
 
-//define the default state as a constant before your class definition
-var defaultState = {
-    //object keys are lowerCamelCase
-    myProperty: 0
+//we have three ways to declare variables in javascript
+
+//CONST cannot be changed! They should be used for any static values
+//CONST are block scoped - you should know what that means!
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const
+const final_const = {
+    is_stylish: true,
+    can_change: false,
 }
 
+//VAR are defined in their execution context. If this is outside
+//of a function, then it is declared in the global namespace!
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var
+var initial_var = {
+    can_change: true,
+}
+initial_var.can_change = false
+
+//LET are block scoped variables that can be altered
+let initial_let = {
+    can_change: true,
+    will_use_a_lot: true,
+}
+
+//Example of a class based component in React
 class Style extends Component {
     constructor(props) {
-        //you should have an understanding of what is happening here
+        //What is super?
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
         super(props)
 
-        this.state = defaultState
+        //Declare the initial state
+        this.state = final_const
 
-        //bind your class functions once, not many times
+        //bind any functions that need `this` as context
+        //binding in the construtor is prefered so that methods are bound once per component mount
         this.classFunction = this.classFunction.bind(this)
     }
 
-    classFunction() {
-        return 0
+    //an example of a simple function that needs to be bound
+    classFunction(event) {
+        this.setState({
+            trigged_function: event.target.id,
+        })
+    }
+
+    //an example of a simple function that does not need to be bound
+    classFunction2(value) {
+        value = value.split(", ").join("/")
+        return value
     }
 
     render() {
@@ -28,28 +69,19 @@ class Style extends Component {
             //opening and closing tags should always be at the same indentation level
             <div
                 //each prop of a JSX component should be a newline
-                style={{height: '10px'}}
-                onClick={ () => { return 0}}>
+                style={{ height: '10px' }}
+                onClick={ (event) => this.classFunction(event)}>
                 Out here with style
-                <div 
-                    style={{height: '5px'}}>
-                    Whatcha gonna do with all that style
-                    <div>
-                        <div>
-                            <div /*one liners are ok for small elements */> so many... </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         )
     }
 }
 
 //alternatively, we can write our React elements as functional components
-
-//what is object destructuring? 
-export const Style2 = ({prop1, prop2}) => {
-
+//what is object destructuring?
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+export const Style2 = ({first_prop, second_prop}) => {
+    
     //just like with return statements, wrap JSX assignments in parentheses
     let content = (
         <div>
@@ -62,13 +94,13 @@ export const Style2 = ({prop1, prop2}) => {
     //example
 
     //this is pretty bad
-    let finalDiv
-    if (prop2 === 'whatever') {
-        finalDiv = (
+    let final_div
+    if (first_prop === 'whatever') {
+        final_div = (
             <div> All I really needed to do was change the text! </div>
         )
     } else {
-        finalDiv = (
+        final_div = (
             <div> But I made two divs for it! </div>
         )
     }
@@ -76,27 +108,27 @@ export const Style2 = ({prop1, prop2}) => {
     //that's bad!
 
     ///this is better
-    let varText
-    if (prop2 === 'whatever') {
-        varText = "This is what I really needed!"
+    let var_text
+    if (first_prop === 'whatever') {
+        var_text = "This is what I really needed!"
     } else {
-        varText = "Some DRY code!"
+        var_text = "Some DRY code!"
     }
 
-    finalDiv = (
-        <div> { varText } </div>
+    final_div = (
+        <div> { var_text } </div>
     )
 
     //or even more concise
-    finalDiv = (
-        <div> { (prop2 === 'whatever') ? "Use this string if the expression is true" : "Otherwise use this one!" } </div>
+    final_div = (
+        <div> { (first_prop === 'whatever') ? "Use this string if the expression is true" : "Otherwise use this one!" } </div>
     )
 
     return (
         <div>
             Just another example
             { content }
-            { finalDiv }
+            { final_div }
         </div>
     )
 }
